@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MedEx - پلتفرم آموزش فارماکولوژی ۲">
+<meta name="author" content="A. DaryaGholiBeigi">
+<title>MedEx | فارماکولوژی ۲</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="container header-inner">
+        <div class="brand">
+            <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s-8-5.5-8-11.5C4 6 7 4 9.5 4c1.5 0 2.5.7 2.5.7S13 4 14.5 4C17 4 20 6 20 9.5 20 15.5 12 21 12 21z"/>
+            </svg>
+            <div>
+                <h1>MedEx</h1>
+                <p>فارماکولوژی ۲ — دکتر سپهری</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="main-nav" id="main-nav">
+    <div class="container">
+        <button class="nav-btn active" data-view="home">صفحه اصلی</button>
+        <button class="nav-btn" data-view="summary">خلاصه درس</button>
+        <button class="nav-btn" data-view="night">خلاصه شب امتحان</button>
+        <button class="nav-btn" data-view="golden">نکات طلایی</button>
+        <button class="nav-btn" data-view="bank">نمونه سؤالات</button>
+        <button class="nav-btn" data-view="authored">سؤالات تألیفی</button>
+        <button class="nav-btn" data-view="exam">آزمون</button>
+    </div>
+</nav>
+
+<main class="container" id="app-main">
+
+    <section class="view active" id="view-home">
+        <div class="hero">
+            <h2>به پلتفرم MedEx خوش آمدید</h2>
+            <p>مرجع آموزش و آزمون فارماکولوژی ۲ بر اساس جزوه‌های دکتر سپهری.</p>
+        </div>
+        <div class="dashboard">
+            <button class="dash-card" data-view="summary">
+                <span class="dash-icon">📚</span>
+                <h3>خلاصه درس</h3>
+                <p>پوشش کامل مباحث: دیابت، تیروئید، فشار خون، آنژین، CHF، ضدآریتمی و هورمون‌ها.</p>
+            </button>
+            <button class="dash-card" data-view="night">
+                <span class="dash-icon">🌙</span>
+                <h3>خلاصه شب امتحان</h3>
+                <p>مرور فشرده و نکته‌محور برای شب امتحان.</p>
+            </button>
+            <button class="dash-card" data-view="golden">
+                <span class="dash-icon">✨</span>
+                <h3>نکات طلایی</h3>
+                <p>دام‌های تستی، افتراق‌های مهم و نکات ظریف.</p>
+            </button>
+            <button class="dash-card" data-view="bank">
+                <span class="dash-icon">📝</span>
+                <h3>نمونه سؤالات</h3>
+                <p>۶۱ سؤال میان‌ترم با پاسخ تشریحی و بازخورد فوری.</p>
+            </button>
+            <button class="dash-card" data-view="authored">
+                <span class="dash-icon">🧪</span>
+                <h3>سؤالات تألیفی</h3>
+                <p>۱۸۰ سؤال طراحی‌شده بر اساس جزوه با تحلیل مبحثی.</p>
+            </button>
+            <button class="dash-card highlight" data-view="exam">
+                <span class="dash-icon">🎯</span>
+                <h3>آزمون</h3>
+                <p>آزمون واقعی با تایمر، تنظیمات و تحلیل عملکرد.</p>
+            </button>
+        </div>
+    </section>
+
+    <section class="view" id="view-summary">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>خلاصه درس</h2>
+        </div>
+        <div class="topic-tabs" id="summary-tabs"></div>
+        <div class="topic-content" id="summary-content"></div>
+    </section>
+
+    <section class="view" id="view-night">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>خلاصه شب امتحان</h2>
+        </div>
+        <div class="topic-tabs" id="night-tabs"></div>
+        <div class="topic-content" id="night-content"></div>
+    </section>
+
+    <section class="view" id="view-golden">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>نکات طلایی</h2>
+        </div>
+        <div class="topic-tabs" id="golden-tabs"></div>
+        <div class="topic-content" id="golden-content"></div>
+    </section>
+
+    <section class="view" id="view-bank">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>نمونه سؤالات میان‌ترم</h2>
+        </div>
+        <div class="filters-bar">
+            <label>مبحث:<select id="bank-topic"><option value="all">همه</option></select></label>
+            <label>سختی:<select id="bank-difficulty">
+                <option value="all">همه</option>
+                <option value="easy">آسان</option>
+                <option value="medium">متوسط</option>
+                <option value="hard">سخت</option>
+            </select></label>
+            <label>وضعیت:<select id="bank-status">
+                <option value="all">همه</option>
+                <option value="unanswered">بی‌پاسخ</option>
+                <option value="wrong">اشتباه</option>
+                <option value="correct">صحیح</option>
+            </select></label>
+            <button class="btn btn-secondary" id="bank-reset">شروع مجدد</button>
+            <span class="counter" id="bank-counter"></span>
+        </div>
+        <div id="bank-list" class="question-list"></div>
+    </section>
+
+    <section class="view" id="view-authored">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>سؤالات تألیفی</h2>
+        </div>
+        <div class="filters-bar">
+            <label>مبحث:<select id="authored-topic"><option value="all">همه</option></select></label>
+            <label>سختی:<select id="authored-difficulty">
+                <option value="all">همه</option>
+                <option value="easy">آسان</option>
+                <option value="medium">متوسط</option>
+                <option value="hard">سخت</option>
+            </select></label>
+            <button class="btn btn-secondary" id="authored-reset">شروع مجدد</button>
+            <span class="counter" id="authored-counter"></span>
+        </div>
+        <div id="authored-list" class="question-list"></div>
+    </section>
+
+    <section class="view" id="view-exam">
+        <div class="view-header">
+            <button class="back-btn" data-view="home">→ بازگشت</button>
+            <h2>آزمون</h2>
+        </div>
+        <div class="exam-setup" id="exam-setup">
+            <h3>تنظیمات آزمون</h3>
+            <div class="setup-grid">
+                <div class="setup-item"><label>مبحث:</label><select id="cfg-topic"><option value="all">همه</option></select></div>
+                <div class="setup-item"><label>سختی:</label><select id="cfg-difficulty">
+                    <option value="all">همه</option>
+                    <option value="easy">آسان</option>
+                    <option value="medium">متوسط</option>
+                    <option value="hard">سخت</option>
+                </select></div>
+                <div class="setup-item"><label>منبع:</label><select id="cfg-source">
+                    <option value="all">ترکیبی</option>
+                    <option value="sample">نمونه سؤالات</option>
+                    <option value="authored">تألیفی</option>
+                </select></div>
+                <div class="setup-item"><label>تعداد:</label><select id="cfg-count">
+                    <option value="5">۵</option>
+                    <option value="10" selected>۱۰</option>
+                    <option value="15">۱۵</option>
+                    <option value="20">۲۰</option>
+                    <option value="all">همه</option>
+                </select></div>
+                <div class="setup-item"><label>مدت (دقیقه):</label><select id="cfg-timer">
+                    <option value="0">بدون محدودیت</option>
+                    <option value="5">۵</option>
+                    <option value="10" selected>۱۰</option>
+                    <option value="15">۱۵</option>
+                    <option value="20">۲۰</option>
+                    <option value="30">۳۰</option>
+                </select></div>
+            </div>
+            <p class="setup-msg" id="setup-msg"></p>
+            <button class="btn btn-primary" id="start-exam">شروع آزمون</button>
+        </div>
+
+        <div class="exam-running hidden" id="exam-running">
+            <div class="exam-bar">
+                <span id="exam-progress">سؤال ۱ از ۱۰</span>
+                <span class="timer" id="exam-timer">۱۰:۰۰</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="exam-progress-fill"></div></div>
+            <div id="exam-question-area"></div>
+            <div class="exam-nav">
+                <button class="btn btn-secondary" id="exam-prev">قبلی</button>
+                <button class="btn btn-secondary" id="exam-mark">علامت‌گذاری</button>
+                <button class="btn btn-secondary" id="exam-next">بعدی</button>
+            </div>
+            <div class="palette" id="exam-palette"></div>
+            <div class="exam-finish"><button class="btn btn-danger" id="exam-finish">پایان آزمون</button></div>
+        </div>
+
+        <div class="exam-result hidden" id="exam-result">
+            <h3>نتیجه آزمون</h3>
+            <div class="result-grid">
+                <div class="rc correct"><span id="r-correct">۰</span><small>صحیح</small></div>
+                <div class="rc wrong"><span id="r-wrong">۰</span><small>غلط</small></div>
+                <div class="rc unanswered"><span id="r-unanswered">۰</span><small>بی‌پاسخ</small></div>
+                <div class="rc"><span id="r-percent">۰٪</span><small>درصد</small></div>
+                <div class="rc"><span id="r-score">۰</span><small>نمره از ۲۰</small></div>
+                <div class="rc"><span id="r-time">۰۰:۰۰</span><small>زمان</small></div>
+            </div>
+            <div class="analysis">
+                <h4>تحلیل مبحثی</h4><div id="r-analysis-topic"></div>
+                <h4>تحلیل سختی</h4><div id="r-analysis-diff"></div>
+                <h4>پیشنهاد مرور</h4><div id="r-weakness"></div>
+            </div>
+            <div class="review-section">
+                <h4>مرور کامل سؤالات</h4>
+                <div id="r-review"></div>
+            </div>
+            <div class="result-actions">
+                <button class="btn btn-warning" id="retry-wrong">آزمون مجدد از غلط‌ها</button>
+                <button class="btn btn-primary" id="new-exam">آزمون جدید</button>
+                <button class="btn btn-secondary" data-view="home">خانه</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="app-footer"><div class="container"><p>A. DaryaGholiBeigi</p></div></footer>
+
+<script src="questions-bank.js"></script>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
