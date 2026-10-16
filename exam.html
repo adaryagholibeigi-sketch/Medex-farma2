@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedEx | آزمون فارماکولوژی ۲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedEx</h1>
+            <p>فارماکولوژی ۲ – دکتر سپهری</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html">صفحه اصلی</a>
+            <a href="content.html">خلاصه درس</a>
+            <a href="content.html#night-summary">خلاصه شب امتحان</a>
+            <a href="content.html#golden-notes">نکات طلایی</a>
+            <a href="questions.html">نمونه سؤالات</a>
+            <a href="questions.html#authored">سؤالات تألیفی</a>
+            <a href="exam.html" class="active">آزمون</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Setup Screen -->
+        <section class="exam-setup" id="exam-setup">
+            <h2>تنظیمات آزمون</h2>
+            <p style="color: #666; margin-bottom: 20px;">آزمون خود را بر اساس مبحث، درجه سختی و تعداد سؤال تنظیم کنید.</p>
+
+            <div class="setup-grid">
+                <div class="setup-item">
+                    <label for="exam-topic">مبحث:</label>
+                    <select id="exam-topic">
+                        <option value="all">همه مباحث</option>
+                        <option value="diabetes">دیابت</option>
+                        <option value="thyroid">تیروئید</option>
+                        <option value="hypertension">فشار خون</option>
+                        <option value="angina">آنژین صدری</option>
+                        <option value="heart-failure">نارسایی قلبی</option>
+                        <option value="antiarrhythmic">ضد آریتمی</option>
+                        <option value="female-hormones">هورمون‌های زنانه</option>
+                        <option value="male-hormones">هورمون‌های مردانه</option>
+                        <option value="other">سایر</option>
+                    </select>
+                </div>
+
+                <div class="setup-item">
+                    <label for="exam-difficulty">درجه سختی:</label>
+                    <select id="exam-difficulty">
+                        <option value="all">همه</option>
+                        <option value="easy">آسان</option>
+                        <option value="medium">متوسط</option>
+                        <option value="hard">سخت</option>
+                    </select>
+                </div>
+
+                <div class="setup-item">
+                    <label for="exam-count">تعداد سؤال:</label>
+                    <select id="exam-count">
+                        <option value="5">۵ سؤال</option>
+                        <option value="10" selected>۱۰ سؤال</option>
+                        <option value="15">۱۵ سؤال</option>
+                        <option value="20">۲۰ سؤال</option>
+                        <option value="all">همه</option>
+                    </select>
+                </div>
+
+                <div class="setup-item">
+                    <label for="exam-source">منبع سؤالات:</label>
+                    <select id="exam-source">
+                        <option value="all">ترکیبی (نمونه + تألیفی)</option>
+                        <option value="sample">فقط نمونه سؤالات</option>
+                        <option value="authored">فقط سؤالات تألیفی</option>
+                    </select>
+                </div>
+
+                <div class="setup-item">
+                    <label for="exam-timer">زمان‌سنج:</label>
+                    <select id="exam-timer">
+                        <option value="0">بدون محدودیت زمانی</option>
+                        <option value="5">۵ دقیقه</option>
+                        <option value="10">۱۰ دقیقه</option>
+                        <option value="15">۱۵ دقیقه</option>
+                        <option value="20">۲۰ دقیقه</option>
+                        <option value="30">۳۰ دقیقه</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" id="start-exam-btn">شروع آزمون</button>
+            </div>
+
+            <div id="setup-message" style="margin-top: 15px; text-align: center; color: var(--danger);"></div>
+        </section>
+
+        <!-- Exam Running Screen -->
+        <section id="exam-running" class="hidden">
+            <div class="exam-header">
+                <div>
+                    <strong id="exam-progress-text">سؤال ۱ از ۱۰</strong>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="exam-progress-fill" style="width: 10%;"></div>
+                    </div>
+                </div>
+                <div class="exam-timer" id="exam-timer-display">--:--</div>
+            </div>
+
+            <div id="exam-question-container"></div>
+
+            <div class="exam-nav">
+                <button class="btn btn-secondary" id="prev-btn">سؤال قبلی</button>
+                <button class="btn btn-primary" id="next-btn">سؤال بعدی</button>
+            </div>
+
+            <div class="question-palette" id="question-palette"></div>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn btn-danger" id="finish-exam-btn">پایان آزمون و مشاهده نتیجه</button>
+            </div>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="exam-result" class="hidden">
+            <div class="content-section">
+                <h2>نتیجه آزمون</h2>
+
+                <div class="result-grid">
+                    <div class="result-card correct">
+                        <div class="value" id="result-correct">۰</div>
+                        <div class="label">پاسخ صحیح</div>
+                    </div>
+                    <div class="result-card wrong">
+                        <div class="value" id="result-wrong">۰</div>
+                        <div class="label">پاسخ غلط</div>
+                    </div>
+                    <div class="result-card unanswered">
+                        <div class="value" id="result-unanswered">۰</div>
+                        <div class="label">بی‌پاسخ</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="value" id="result-percent">۰٪</div>
+                        <div class="label">درصد پاسخ صحیح</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="value" id="result-score">۰</div>
+                        <div class="label">نمره نهایی (از ۲۰)</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="value" id="result-time">۰۰:۰۰</div>
+                        <div class="label">زمان صرف‌شده</div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>تحلیل بر اساس مبحث</h3>
+                    <div id="analysis-topic"></div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>تحلیل بر اساس درجه سختی</h3>
+                    <div id="analysis-difficulty"></div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>نقاط ضعف و پیشنهاد مرور</h3>
+                    <div id="analysis-weakness"></div>
+                </div>
+
+                <div class="analysis-section">
+                    <h3>مرور کامل سؤالات</h3>
+                    <div id="review-questions"></div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button class="btn btn-warning" id="retry-wrong-btn" style="background: var(--warning); color: white;">آزمون مجدد از سؤالات غلط</button>
+                    <button class="btn btn-primary" id="new-exam-btn">آزمون جدید</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>A. DaryaGholiBeigi</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

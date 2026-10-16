@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedEx | بانک سؤالات فارماکولوژی ۲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedEx</h1>
+            <p>فارماکولوژی ۲ – دکتر سپهری</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html">صفحه اصلی</a>
+            <a href="content.html">خلاصه درس</a>
+            <a href="content.html#night-summary">خلاصه شب امتحان</a>
+            <a href="content.html#golden-notes">نکات طلایی</a>
+            <a href="questions.html" class="active">نمونه سؤالات</a>
+            <a href="questions.html#authored">سؤالات تألیفی</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>نمونه سؤالات میان‌ترم</h2>
+            <p>در این بخش، سؤالات موجود در فایل بانک سؤالات میان‌ترم (پاسخ‌نامه) به همراه پاسخ صحیح و توضیح علمی ارائه شده است. درجه سختی هر سؤال مشخص شده است.</p>
+
+            <div class="filters">
+                <label for="filter-topic">مبحث:</label>
+                <select id="filter-topic">
+                    <option value="all">همه</option>
+                    <option value="diabetes">دیابت</option>
+                    <option value="thyroid">تیروئید</option>
+                    <option value="hypertension">فشار خون</option>
+                    <option value="angina">آنژین</option>
+                    <option value="heart-failure">نارسایی قلبی</option>
+                    <option value="antiarrhythmic">ضد آریتمی</option>
+                    <option value="female-hormones">هورمون‌های زنانه</option>
+                    <option value="male-hormones">هورمون‌های مردانه</option>
+                    <option value="other">سایر</option>
+                </select>
+                <label for="filter-difficulty">سختی:</label>
+                <select id="filter-difficulty">
+                    <option value="all">همه</option>
+                    <option value="easy">آسان</option>
+                    <option value="medium">متوسط</option>
+                    <option value="hard">سخت</option>
+                </select>
+            </div>
+
+            <div id="quiz-container"></div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-primary" id="submit-quiz">ثبت پاسخ‌ها</button>
+                <button class="btn btn-secondary" id="reset-quiz">شروع مجدد</button>
+            </div>
+
+            <div class="quiz-result" id="quiz-result">
+                <h3>نتیجه آزمون</h3>
+                <p class="score" id="score-display">۰</p>
+                <p id="score-text">تعداد پاسخ‌های صحیح</p>
+            </div>
+        </section>
+
+        <!-- سؤالات تألیفی -->
+        <section class="content-section" id="authored">
+            <h2>سؤالات تألیفی</h2>
+            <p>این سؤالات بر اساس مباحث جزوه طراحی شده‌اند و از نمونه سؤالات فایل جدا هستند. تمرکز اصلی بر نکات ظریف، تشخیص افتراقی و تصمیم‌گیری بالینی است.</p>
+
+            <div id="authored-container"></div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-primary" id="submit-authored">ثبت پاسخ‌ها</button>
+                <button class="btn btn-secondary" id="reset-authored">شروع مجدد</button>
+            </div>
+
+            <div class="quiz-result" id="authored-result">
+                <h3>نتیجه آزمون تألیفی</h3>
+                <p class="score" id="authored-score-display">۰</p>
+                <p id="authored-score-text">تعداد پاسخ‌های صحیح</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>A. DaryaGholiBeigi</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
