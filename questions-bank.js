@@ -202,7 +202,7 @@ const authoredQuestions = [
 { id: 380, topic: "other", difficulty: "hard", question: "کدام دارو در درمان پرمویی در دختران با سندرم تخمدان پلی‌کیستیک (PCO) کاربرد دارد؟", options: ["اسپیرونولاکتون", "فوروسمید", "هیدروکلروتیازید", "تریامترن"], correct: 0, explanation: "اسپیرونولاکتون به علت اثر ضد آندروژنی، در پرمویی دختران با PCO کاربرد دارد." }
 
 ];
-
+window.AUTHORED_QUESTIONS_FROM_BANK = authoredQuestions;
 // ================== موتور آزمون ==================
 
 let examState = {
